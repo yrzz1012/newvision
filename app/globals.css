@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== 设计系统 — Apple 风格 · #a8ddc0 薄荷 ===== */
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f7;
+  --bg-tertiary: #fafafa;
+  --text-primary: #1d1d1f;
+  --text-secondary: #6e6e73;
+  --text-tertiary: #aeaeb2;
+  --accent: #2759cd;
+  --accent-hover: #1e4ab5;
+  --accent-light: rgba(39, 89, 205, 0.10);
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+}
+
+html { color-scheme: light; }
+
+body {
+  background:
+    radial-gradient(ellipse 60% 50% at 10% 10%, rgba(100, 140, 235, 0.65) 0%, transparent 45%),
+    radial-gradient(ellipse 50% 45% at 90% 10%, rgba(90, 170, 230, 0.60) 0%, transparent 45%),
+    radial-gradient(ellipse 35% 55% at 0% 50%, rgba(80, 130, 220, 0.55) 0%, transparent 50%),
+    radial-gradient(ellipse 35% 55% at 100% 50%, rgba(110, 160, 220, 0.52) 0%, transparent 50%),
+    radial-gradient(ellipse 45% 45% at 50% 70%, rgba(100, 130, 220, 0.48) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 40% at 80% 75%, rgba(120, 150, 225, 0.45) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 40% at 20% 85%, rgba(140, 120, 215, 0.40) 0%, transparent 50%),
+    #f0f1f8;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer components {
+  /* ── 悬浮面板（磨砂玻璃卡片） ── */
+  .panel-float {
+    background: rgba(255, 255, 255, 0.40);
+    backdrop-filter: blur(48px) saturate(200%);
+    -webkit-backdrop-filter: blur(48px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    box-shadow:
+      0 4px 16px rgba(0, 0, 0, 0.03),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+    transition: all 500ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  .panel-float:hover {
+    background: rgba(255, 255, 255, 0.55);
+    border-color: rgba(255, 255, 255, 0.7);
+    box-shadow:
+      0 16px 48px rgba(0, 0, 0, 0.05),
+      0 0 0 1px rgba(39, 89, 205, 0.12),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+    transform: translateY(-3px);
+  }
+
+  .skeleton {
+    background: linear-gradient(90deg, #f4f4f8 0%, #eaebf0 50%, #f4f4f8 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+  }
+
+  .bg-radial-glow {
+    background:
+      radial-gradient(ellipse 60% 40% at 20% 15%, rgba(100, 140, 230, 0.30), transparent 55%),
+      radial-gradient(ellipse 50% 35% at 80% 50%, rgba(110, 160, 220, 0.25), transparent 55%),
+      radial-gradient(ellipse 55% 45% at 50% 80%, rgba(90, 125, 210, 0.20), transparent 55%);
+  }
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.12); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0, 0, 0, 0.22); }
