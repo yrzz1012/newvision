@@ -17,13 +17,13 @@ export async function middleware(request: NextRequest) {
           return request.cookies.getAll();
         },
         setAll(cookiesToSet: { name: string; value: string; options: Record<string, unknown> }[]) {
-          cookiesToSet.forEach(({ name, value }) =>
-            (request.cookies as any).set(name, value)
-          );
+          cookiesToSet.forEach(({ name, value, options }) => {
+            (request.cookies as any).set(name, value, options);
+          });
           supabaseResponse = NextResponse.next({ request });
-          cookiesToSet.forEach(({ name, value }) =>
-            (supabaseResponse.cookies as any).set(name, value)
-          );
+          cookiesToSet.forEach(({ name, value, options }) => {
+            (supabaseResponse.cookies as any).set(name, value, options);
+          });
         },
       },
     }

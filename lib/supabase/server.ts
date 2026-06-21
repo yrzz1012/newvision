@@ -19,8 +19,8 @@ export async function createClient() {
         },
         setAll(cookiesToSet: { name: string; value: string; options: Record<string, unknown> }[]) {
           try {
-            cookiesToSet.forEach(({ name, value }) =>
-              (cookieStore as any).set(name, value)
+            cookiesToSet.forEach(({ name, value, options }) =>
+              (cookieStore as any).set(name, value, options)
             );
           } catch {
             // 在Server Components中忽略set cookie错误
