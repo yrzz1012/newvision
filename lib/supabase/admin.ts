@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
+import { SUPABASE_URL } from './config';
 
 /**
  * Admin客户端（使用service_role key）
@@ -7,7 +8,7 @@ import { createClient } from '@supabase/supabase-js';
  */
 export function createAdminClient() {
   return createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    SUPABASE_URL,
     process.env.SUPABASE_SERVICE_ROLE_KEY!,
     {
       auth: {
