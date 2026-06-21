@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { createAdminClient } from '@/lib/supabase/admin';
 
+export const runtime = 'nodejs';
+
 /**
  * POST /api/seed — 插入真实作品数据
  */

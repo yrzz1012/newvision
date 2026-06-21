@@ -1,6 +1,8 @@
 import { createServerClient } from '@supabase/ssr';
 import { NextResponse, type NextRequest } from 'next/server';
 
+export const runtime = 'nodejs';
+
 /**
  * Auth 回调 — 处理邮箱确认链接中的 code 参数
  * Supabase 注册确认邮件会自动带上 code → 此处交换为session → 重定向到首页
