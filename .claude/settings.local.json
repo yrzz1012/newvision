@@ -198,7 +198,9 @@
       "Bash(npx tsc *)",
       "Bash(git commit *)",
       "Bash(node scripts/compress-images.cjs)",
-      "Bash(git checkout *)"
+      "Bash(git checkout *)",
+      "Bash(npm uninstall *)",
+      "Bash(rm -rf scripts/)"
     ],
     "additionalDirectories": [
       "d:\\260614web",
