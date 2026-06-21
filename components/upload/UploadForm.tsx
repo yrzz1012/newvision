@@ -226,7 +226,7 @@ export default function UploadForm({ userId, isEdit }: UploadFormProps) {
 
         {/* 图片预览网格 */}
         {photoPreviews.length > 0 && (
-          <div className="mb-3 grid grid-cols-3 gap-2">
+          <div className="mb-3 grid grid-cols-2 sm:grid-cols-3 gap-2">
             {photoPreviews.map((preview, i) => (
               <div key={i} className="relative aspect-[4/3] rounded-xl overflow-hidden border border-black/[0.04]">
                 <img src={preview} alt="" className="h-full w-full object-cover" />

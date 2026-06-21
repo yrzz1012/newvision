@@ -187,7 +187,16 @@
       "Bash(curl -s 'https://bmnzhxverilnbbasafeg.supabase.co/rest/v1/works?select=id,title,cover_url,splat_file_url,photos,is_published,user_id&order=created_at.desc&limit=5' -H 'apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtbnpoeHZlcmlsbmJiYXNhZmVnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE0NDE2NzAsImV4cCI6MjA5NzAxNzY3MH0.bcJ595LBXq7Yw8ZIuC-NQHvNo-9PqfkBvLHhigsrDvU' -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtbnpoeHZlcmlsbmJiYXNhZmVnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE0NDE2NzAsImV4cCI6MjA5NzAxNzY3MH0.bcJ595LBXq7Yw8ZIuC-NQHvNo-9PqfkBvLHhigsrDvU')",
       "Bash(curl -s 'https://bmnzhxverilnbbasafeg.supabase.co/rest/v1/works?select=id,title,category,cover_url,splat_file_url,photos,is_published,is_featured,user_id,view_count,created_at&order=created_at.desc&limit=5' -H 'apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtbnpoeHZlcmlsbmJiYXNhZmVnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE0NDE2NzAsImV4cCI6MjA5NzAxNzY3MH0.bcJ595LBXq7Yw8ZIuC-NQHvNo-9PqfkBvLHhigsrDvU' -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtbnpoeHZlcmlsbmJiYXNhZmVnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE0NDE2NzAsImV4cCI6MjA5NzAxNzY3MH0.bcJ595LBXq7Yw8ZIuC-NQHvNo-9PqfkBvLHhigsrDvU')",
       "Bash(curl -s -o /dev/null -w \"上传:%{http_code}\\\\n\" http://localhost:3000/upload)",
-      "Bash(curl -s -o /dev/null -w \"红创详情:%{http_code}\\\\n\" \"http://localhost:3000/work/959de9e2-9803-4d02-964d-f36780d61432\")"
+      "Bash(curl -s -o /dev/null -w \"红创详情:%{http_code}\\\\n\" \"http://localhost:3000/work/959de9e2-9803-4d02-964d-f36780d61432\")",
+      "Bash(git commit -m 'v1.0 新视界 3D 空间平台 *)",
+      "Bash(git config *)",
+      "Bash(git remote *)",
+      "Bash(git branch *)",
+      "Bash(git push *)",
+      "Bash(curl -s -o /dev/null -w \"教程:%{http_code} \" http://localhost:3000/tutorial)",
+      "Bash(node -e \"const ssr = require\\('@supabase/ssr'\\); console.log\\(Object.keys\\(ssr\\).join\\(', '\\)\\)\")",
+      "Bash(npx tsc *)",
+      "Bash(git commit *)"
     ],
     "additionalDirectories": [
       "d:\\260614web",

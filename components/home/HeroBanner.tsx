@@ -81,9 +81,9 @@ export default function HeroBanner({ featuredWorks }: HeroBannerProps) {
         {/* 文字 */}
         {cur.id === slides[0]?.id ? (
           <div className="absolute inset-0 z-10 flex items-center justify-center">
-            <h1 className="text-3xl md:text-5xl font-bold text-white text-center tracking-wide px-6"
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white text-center tracking-wide px-4 leading-snug"
               style={{ textShadow: '0 2px 24px rgba(0,0,0,0.5)' }}>
-              比图片更真实，比视频更自由
+              比图片更真实 <br className="md:hidden" />比视频更自由
             </h1>
           </div>
         ) : (

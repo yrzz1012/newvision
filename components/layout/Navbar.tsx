@@ -3,7 +3,8 @@
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
-import { Search, User, Upload, LogOut, Settings, ChevronDown, Menu, X } from 'lucide-react';
+import { Search, User, Upload, LogOut, Settings, ChevronDown, Menu, X, MessageSquare } from 'lucide-react';
+import FeedbackModal from '@/components/layout/FeedbackModal';
 import { cn } from '@/lib/utils';
 import { useAuthStore } from '@/lib/auth-store';
 
@@ -13,6 +14,7 @@ export default function Navbar() {
   const { user, profile, signOut } = useAuthStore();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [feedbackOpen, setFeedbackOpen] = useState(false);
   const [searchValue, setSearchValue] = useState('');
   const [scrolled, setScrolled] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -66,7 +68,7 @@ export default function Navbar() {
       >
         <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 lg:px-8">
           {/* ── 左侧：Logo ── */}
-          <div className="flex items-center gap-6 lg:gap-8">
+          <div className="flex items-center gap-6 lg:gap-8 shrink-0">
             <Link href="/" className="flex items-center">
               <span className={cn(
                 'text-lg font-semibold tracking-tight transition-colors duration-300 lg:text-xl',
@@ -80,11 +82,42 @@ export default function Navbar() {
             <nav className="hidden items-center gap-1 md:flex">
               <NavLink href="/" active={pathname === '/'} overHero={overHero}>首页</NavLink>
               <NavLink href="/tutorial" overHero={overHero}>教程</NavLink>
+              <button
+                onClick={() => setFeedbackOpen(true)}
+                className="rounded-full px-4 py-1.5 text-sm font-medium transition-all bg-accent text-white shadow-sm shadow-accent/20 hover:bg-accent-hover active:scale-95"
+              >
+                <span className="flex items-center gap-1.5">
+                  <MessageSquare className="h-3.5 w-3.5" />
+                  反馈
+                </span>
+              </button>
             </nav>
           </div>
 
+          {/* ── 手机端搜索 - 居中 ── */}
+          <div className="flex-1 flex items-center justify-center px-2 md:hidden">
+            <form onSubmit={handleSearch} className="relative w-full max-w-xs">
+              <Search className={cn(
+                'absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 transition-colors',
+                overHero ? 'text-white/50' : 'text-text-tertiary'
+              )} />
+              <input
+                type="text"
+                value={searchValue}
+                onChange={(e) => setSearchValue(e.target.value)}
+                placeholder="搜索空间"
+                className={cn(
+                  'h-8 w-full rounded-full border pl-8 pr-3 text-sm outline-none backdrop-blur transition-all placeholder:text-white/40',
+                  overHero
+                    ? 'bg-white/10 border-white/20 text-white placeholder:text-white/30 focus:border-white/30 focus:bg-white/15'
+                    : 'bg-black/[0.03] border-black/[0.06] text-text-primary placeholder:text-text-tertiary focus:border-black/[0.12] focus:bg-white/40'
+                )}
+              />
+            </form>
+          </div>
+
           {/* ── 右侧 ── */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
             {/* 搜索 - 桌面 */}
             <div className="hidden items-center md:flex">
               <form onSubmit={handleSearch} className="relative">
@@ -188,20 +221,12 @@ export default function Navbar() {
             <div className="p-4 space-y-1">
               <MobileLink href="/" active={pathname === '/'} onClick={() => setMobileOpen(false)}>首页</MobileLink>
               <MobileLink href="/tutorial" onClick={() => setMobileOpen(false)}>教程</MobileLink>
+              <button onClick={() => { setFeedbackOpen(true); setMobileOpen(false); }}
+                className="flex w-full items-center gap-2 px-4 py-3 rounded-xl text-sm text-white bg-accent hover:bg-accent-hover transition-all">
+                <MessageSquare className="h-4 w-4" /> 反馈
+              </button>
 
               <div className="my-3 border-t border-black/[0.04]" />
-
-              {/* 移动端搜索 */}
-              <form onSubmit={(e) => { e.preventDefault(); handleSearch(e); setMobileOpen(false); }} className="relative mb-3">
-                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-text-tertiary" />
-                <input
-                  type="text"
-                  value={searchValue}
-                  onChange={(e) => setSearchValue(e.target.value)}
-                  placeholder="搜索空间..."
-                  className="w-full h-10 rounded-xl border border-black/[0.08] bg-bg-secondary pl-10 pr-3 text-sm outline-none focus:border-black/[0.15]"
-                />
-              </form>
 
               <MobileLink href="/upload" onClick={() => setMobileOpen(false)}>上传作品</MobileLink>
               {user ? (
@@ -219,6 +244,7 @@ export default function Navbar() {
           </div>
         </>
       )}
+      <FeedbackModal open={feedbackOpen} onClose={() => setFeedbackOpen(false)} />
     </>
   );
 }

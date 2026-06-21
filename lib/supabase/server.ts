@@ -17,10 +17,10 @@ export async function createClient() {
         getAll() {
           return cookieStore.getAll();
         },
-        setAll(cookiesToSet) {
+        setAll(cookiesToSet: { name: string; value: string; options: Record<string, unknown> }[]) {
           try {
-            cookiesToSet.forEach(({ name, value, options }) =>
-              cookieStore.set(name, value, options)
+            cookiesToSet.forEach(({ name, value }) =>
+              (cookieStore as any).set(name, value)
             );
           } catch {
             // 在Server Components中忽略set cookie错误
