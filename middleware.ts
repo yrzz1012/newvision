@@ -1,49 +1,30 @@
-import { createServerClient } from '@supabase/ssr';
 import { NextResponse, type NextRequest } from 'next/server';
 
 /**
  * 路由中间件 — 保护需登录的页面
- * 拦截 /upload → 未登录重定向到 /auth/login
+ * 通过检查 supabase auth cookie 判断登录状态（不引入 Supabase 库，兼容 Edge Runtime）
  */
-export async function middleware(request: NextRequest) {
-  let supabaseResponse = NextResponse.next({ request });
+export function middleware(request: NextRequest) {
+  const pathname = request.nextUrl.pathname;
 
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
-      cookies: {
-        getAll() {
-          return request.cookies.getAll();
-        },
-        setAll(cookiesToSet: { name: string; value: string; options: Record<string, unknown> }[]) {
-          cookiesToSet.forEach(({ name, value, options }) => {
-            (request.cookies as any).set(name, value, options);
-          });
-          supabaseResponse = NextResponse.next({ request });
-          cookiesToSet.forEach(({ name, value, options }) => {
-            (supabaseResponse.cookies as any).set(name, value, options);
-          });
-        },
-      },
-    }
+  // 检查是否有 Supabase auth cookie（格式：sb-xxx-auth-token）
+  const hasAuthCookie = request.cookies.getAll().some((c) =>
+    c.name.startsWith('sb-') && c.name.endsWith('-auth-token')
   );
 
-  const { data: { user } } = await supabase.auth.getUser();
-
   // /upload 需要登录
-  if (!user && request.nextUrl.pathname.startsWith('/upload')) {
+  if (!hasAuthCookie && pathname.startsWith('/upload')) {
     const loginUrl = new URL('/auth/login', request.url);
-    loginUrl.searchParams.set('redirect', request.nextUrl.pathname);
+    loginUrl.searchParams.set('redirect', pathname);
     return NextResponse.redirect(loginUrl);
   }
 
   // 已登录用户访问登录/注册页 → 重定向到首页
-  if (user && request.nextUrl.pathname.startsWith('/auth')) {
+  if (hasAuthCookie && pathname.startsWith('/auth')) {
     return NextResponse.redirect(new URL('/', request.url));
   }
 
-  return supabaseResponse;
+  return NextResponse.next();
 }
 
 export const config = {
