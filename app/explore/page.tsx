@@ -1,6 +1,8 @@
-import { createClient } from '@/lib/supabase/server';
+import { createPublicClient } from '@/lib/supabase/public';
 import ExploreClient from '@/components/home/ExploreClient';
 import type { Metadata } from 'next';
+
+export const runtime = 'nodejs';
 
 export const metadata: Metadata = {
   title: '发现空间',
@@ -12,7 +14,7 @@ export default async function ExplorePage({
 }: {
   searchParams: { category?: string; q?: string };
 }) {
-  const supabase = await createClient();
+  const supabase = createPublicClient();
 
   let query = supabase
     .from('works')

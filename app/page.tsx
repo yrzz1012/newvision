@@ -1,13 +1,14 @@
-import { createClient } from '@/lib/supabase/server';
+import { createPublicClient } from '@/lib/supabase/public';
 import HomeClient from '@/components/home/HomeClient';
 
+export const runtime = 'nodejs';
+
 /**
- * 首页 — 服务端获取数据，客户端组件负责交互
+ * 首页 — SSR 数据获取（公开数据，无需登录）
  */
 export default async function HomePage() {
-  const supabase = await createClient();
+  const supabase = createPublicClient();
 
-  // 并行获取精选和全部作品
   const [featuredResult, worksResult] = await Promise.all([
     supabase
       .from('works')
