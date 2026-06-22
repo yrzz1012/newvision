@@ -200,12 +200,44 @@
       "Bash(node scripts/compress-images.cjs)",
       "Bash(git checkout *)",
       "Bash(npm uninstall *)",
-      "Bash(rm -rf scripts/)"
+      "Bash(rm -rf scripts/)",
+      "WebFetch(domain:newvision-five.vercel.app)",
+      "Bash(cat > *)",
+      "Bash(cat)",
+      "Read(//d/260614web-miniapp/pages/login/**)",
+      "Read(//d/260614web-miniapp/pages/upload/**)",
+      "Read(//d/260614web-miniapp/pages/profile/**)",
+      "Read(//d/260614web-miniapp/pages/my-works/**)",
+      "Read(//d/260614web-miniapp/pages/work-detail/**)",
+      "Bash(curl -s \"http://localhost:3000/api/works?limit=2\")",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); [print\\(w['title'], '| cover:', bool\\(w.get\\('cover_url'\\)\\), '| 3D:', bool\\(w.get\\('splat_file_url'\\)\\), '| author:', w.get\\('profiles',{}\\).get\\('username','?'\\)\\) for w in d['works']]\")",
+      "Bash(node --check pages/index/index.js)",
+      "Bash(node --check pages/explore/explore.js)",
+      "Bash(node --check pages/upload/upload.js)",
+      "Bash(node --check pages/profile/profile.js)",
+      "Bash(node --check pages/my-works/my-works.js)",
+      "Bash(sed -i 's/display: flex; flex-wrap: wrap; gap: 12px;/display: flex; flex-wrap: wrap; justify-content: space-between;/g' pages/explore/explore.wxss pages/profile/profile.wxss)",
+      "Bash(sed -i 's/width: calc\\(50% - 6px\\);/width: 49%; margin-bottom: 12px; box-sizing: border-box;/g' pages/explore/explore.wxss pages/profile/profile.wxss)",
+      "Bash(curl -s 'https://bmnzhxverilnbbasafeg.supabase.co/rest/v1/works?select=id,title,cover_url,splat_file_url&is_published=eq.true&limit=3' -H 'apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtbnpoeHZlcmlsbmJiYXNhZmVnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE0NDE2NzAsImV4cCI6MjA5NzAxNzY3MH0.bcJ595LBXq7Yw8ZIuC-NQHvNo-9PqfkBvLHhigsrDvU')",
+      "Bash(node --check utils/supabase.js)",
+      "Bash(curl -s 'https://bmnzhxverilnbbasafeg.supabase.co/rest/v1/works?select=*,profiles!inner\\(username,display_name,avatar_url\\)&is_published=eq.true&order=created_at.desc&limit=3' -H 'apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtbnpoeHZlcmlsbmJiYXNhZmVnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE0NDE2NzAsImV4cCI6MjA5NzAxNzY3MH0.bcJ595LBXq7Yw8ZIuC-NQHvNo-9PqfkBvLHhigsrDvU')",
+      "Bash(curl -s 'https://bmnzhxverilnbbasafeg.supabase.co/rest/v1/works?select=id,title&is_published=eq.true&order=created_at.desc&limit=3' -H 'apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtbnpoeHZlcmlsbmJiYXNhZmVnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE0NDE2NzAsImV4cCI6MjA5NzAxNzY3MH0.bcJ595LBXq7Yw8ZIuC-NQHvNo-9PqfkBvLHhigsrDvU')",
+      "Bash(python -c \"import sys,json; works=json.load\\(sys.stdin\\); print\\(f'{len\\(works\\)} works'\\)\")",
+      "Bash(python -c \"import sys,json; works=json.load\\(sys.stdin\\); print\\(f'{len\\(works\\)} works with profiles join'\\)\")",
+      "Bash(curl -s 'https://bmnzhxverilnbbasafeg.supabase.co/rest/v1/works?select=*,profiles!inner\\(username,display_name,avatar_url\\)&is_published=eq.true&order=created_at.desc&limit=2' -H 'apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtbnpoeHZlcmlsbmJiYXNhZmVnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE0NDE2NzAsImV4cCI6MjA5NzAxNzY3MH0.bcJ595LBXq7Yw8ZIuC-NQHvNo-9PqfkBvLHhigsrDvU' -w '\\\\nHTTP: %{http_code}\\\\nTime: %{time_total}s')",
+      "Bash(curl -s 'https://bmnzhxverilnbbasafeg.supabase.co/rest/v1/works?select=id,title,cover_url,splat_file_url,view_count,description,is_featured&is_published=eq.true&order=created_at.desc&limit=3' -H 'apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtbnpoeHZlcmlsbmJiYXNhZmVnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE0NDE2NzAsImV4cCI6MjA5NzAxNzY3MH0.bcJ595LBXq7Yw8ZIuC-NQHvNo-9PqfkBvLHhigsrDvU')",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/api/works?limit=1)",
+      "Bash(curl -s -X POST http://localhost:3000/api/migrate-images)",
+      "Bash(curl -s -I \"https://newvision-five.vercel.app/images/hero/0eaf279beb086d3788bfe9d416eade46.png\")",
+      "Bash(curl -s -X POST http://localhost:3000/api/migrate-hero)",
+      "Bash(curl -s 'https://bmnzhxverilnbbasafeg.supabase.co/rest/v1/works?select=id,title,category,is_published,is_featured&order=created_at.desc&limit=10' -H 'apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtbnpoeHZlcmlsbmJiYXNhZmVnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE0NDE2NzAsImV4cCI6MjA5NzAxNzY3MH0.bcJ595LBXq7Yw8ZIuC-NQHvNo-9PqfkBvLHhigsrDvU')",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(d.get\\('message', d.get\\('error', '??'\\)\\)\\)\")"
     ],
     "additionalDirectories": [
       "d:\\260614web",
       "d:\\260614web\\public\\viewer",
-      "d:\\260614web\\app\\work\\[id]"
+      "d:\\260614web\\app\\work\\[id]",
+      "d:\\260614web-miniapp\\pages\\index"
     ]
   }
 }
