@@ -231,7 +231,8 @@
       "Bash(curl -s -I \"https://newvision-five.vercel.app/images/hero/0eaf279beb086d3788bfe9d416eade46.png\")",
       "Bash(curl -s -X POST http://localhost:3000/api/migrate-hero)",
       "Bash(curl -s 'https://bmnzhxverilnbbasafeg.supabase.co/rest/v1/works?select=id,title,category,is_published,is_featured&order=created_at.desc&limit=10' -H 'apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtbnpoeHZlcmlsbmJiYXNhZmVnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE0NDE2NzAsImV4cCI6MjA5NzAxNzY3MH0.bcJ595LBXq7Yw8ZIuC-NQHvNo-9PqfkBvLHhigsrDvU')",
-      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(d.get\\('message', d.get\\('error', '??'\\)\\)\\)\")"
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(d.get\\('message', d.get\\('error', '??'\\)\\)\\)\")",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\" \"https://newvision-five.vercel.app/viewer-proxy?splatId=6f01f0f4\")"
     ],
     "additionalDirectories": [
       "d:\\260614web",
